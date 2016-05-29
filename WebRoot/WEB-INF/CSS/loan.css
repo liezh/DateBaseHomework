@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.loanWindow {
+	background-color: #3CC;
+	text-align: center;
+	margin: 20px;
+	float: right;
+	height: auto;
+	width: auto;
+	border: 1px solid #333;
+	margin:100px;
+	
+	
+}
+body {
+	background-image:url(../img/light.jpg);
+}
