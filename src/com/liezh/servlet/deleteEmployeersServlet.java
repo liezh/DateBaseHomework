@@ -2,7 +2,6 @@ package com.liezh.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,14 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.liezh.Dao.ItemsDAO;
-import com.liezh.entity.Items;
 
-public class SearchEmployeersInfo extends HttpServlet {
+public class deleteEmployeersServlet extends HttpServlet {
 
 	/**
 	 * Constructor of the object.
 	 */
-	public SearchEmployeersInfo() {
+	public deleteEmployeersServlet() {
 		super();
 	}
 
@@ -62,42 +60,15 @@ public class SearchEmployeersInfo extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		request.setCharacterEncoding("UTF-8");
-		String conditions = request.getParameter("conditions");
-		String content = request.getParameter("content");
-		System.out.println(conditions + "===" + content);
-		
-		String str = "<div><table width='100%' border='1'> <tr><td>员工号</td> <td>身份证号</td> <td>姓名</td> <td>性别</td> <td>年龄</td> " +
-	             "<td>婚姻状况</td> <td>学历</td> <td>职称</td> <td>住址</td> <td>电话号码</td></tr>";
-	ItemsDAO itemsDao = new ItemsDAO();
-	String flag = conditions + "='" +content + "'" ;
-   ArrayList<Items> list = itemsDao.getAllItems(flag);
-   
-      if(list!=null&&list.size()>0)
-      {
-		   for(int i=0;i<list.size();i++)
-          {
-    	      out.print("================="+i + "===" + list.size());
-             Items item = list.get(i);  
-             str += "<tr><td>" + item.getId() + "</td><td>" + item.getPersonalID() + "</td><td>" +item.getName() + "</td><td>"
-             + item.getSex() + "</td><td>" + item.getAge() + "</td><td>" + item.getMarriage() + "</td><td>" + item.getEducation()
-              + "</td><td>" + item.getTitle() +  "</td><td>" + item.getAddress() + "</td><td>" + item.getPhoneNum() + "</td></tr>" ;
-             System.out.println(str);
-          }
-      }else{
-      		str = "获取失败！！"+content;
-      }
-      str += "</table></div>";
-      request.setAttribute("infoStr", str);
-      
-//      String action = (String) request.getAttribute("action");
-//      System.out.println("111111111111"+action);
-//      if(action == "query"){
-      	RequestDispatcher dispatcher = request.getRequestDispatcher("queryEmployeersInfo.jsp");
+		String idStr = request.getParameter("inputId");
+		ItemsDAO itemsDAO = new ItemsDAO();
+		if(itemsDAO.deleteEmployeersInfo(idStr)){
+			request.setAttribute("massge", "删除成功！！");
+		}else {
+			request.setAttribute("massge", "删除失败！！");
+		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher("deleteEmployeersInfo.jsp");
       	dispatcher.forward(request, response);
-//	      }else{
-//    	  RequestDispatcher dispatcher = request.getRequestDispatcher("deleteEmployeersInfo.jsp");
-//          dispatcher.forward(request, response);
-//	      }
 	}
 
 	/**

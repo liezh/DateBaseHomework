@@ -9,7 +9,6 @@ import com.liezh.entity.*;
 
 public class ItemsDAO {
 	public ItemsDAO(){
-//		System.out.print("fdsfdsaffsdfdsfd");
 	}
 
 	public ArrayList<Items> getAllItems(String strInfo){
@@ -64,14 +63,6 @@ public class ItemsDAO {
 					ex.printStackTrace();
 				}
 			}
-			if (conn != null) {
-				try {
-					conn.close();
-					conn = null;
-				} catch (Exception ex) {
-					ex.printStackTrace();
-				}
-			}
 		}
 	}
 	
@@ -118,14 +109,6 @@ public class ItemsDAO {
 					ex.printStackTrace();
 				}
 			}
-			if (conn != null) {
-				try {
-					conn.close();
-					conn = null;
-				} catch (Exception ex) {
-					ex.printStackTrace();
-				}
-			}
 			
 		}
 	}
@@ -168,10 +151,82 @@ public class ItemsDAO {
 					ex.printStackTrace();
 				}
 			}
-			if (conn != null) {
+			
+		}
+	}
+
+	public boolean updateEmployeersInfo(String str, String condition) {
+		Connection conn = null;
+		Statement stmt = null;
+//		ResultSet rs = null;
+		try {
+			conn = DBHelper.getConnection();
+			String sql = "update employeesinfo set " + str + " where id=" + condition + ";" ;// SQL”Ôæ‰
+			stmt = conn.createStatement();
+			int m = 0;
+			try {
+				m = stmt.executeUpdate(sql);
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println(e);
+				return false;
+			}
+			if(m == 1){
+				return true;
+			}else {
+				return false;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} finally{
+			//  Õ∑≈”Ôæ‰∂‘œÛ
+			if (stmt != null) {
 				try {
-					conn.close();
-					conn = null;
+					stmt.close();
+					stmt = null;
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			}
+			
+		}
+
+	}
+
+	public boolean deleteEmployeersInfo(String idStr) {
+		// TODO Auto-generated method stub
+		Connection conn = null;
+		Statement stmt = null;
+//		ResultSet rs = null;
+		try {
+			conn = DBHelper.getConnection();
+			String sql = "delete from employeesinfo where id="+ idStr + ";" ;// SQL”Ôæ‰
+			stmt = conn.createStatement();
+			int m = 0;
+			try {
+				m = stmt.executeUpdate(sql);
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println(e);
+				return false;
+			}
+			if(m == 1){
+				return true;
+			}else {
+				return false;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} finally{
+			//  Õ∑≈”Ôæ‰∂‘œÛ
+			if (stmt != null) {
+				try {
+					stmt.close();
+					stmt = null;
 				} catch (Exception ex) {
 					ex.printStackTrace();
 				}
