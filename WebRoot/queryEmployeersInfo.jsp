@@ -43,11 +43,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   
     <form name="form1" method="post" action="SearchEmployeersInfo">
-    <%request.setAttribute("action", "query"); %>
-        <table width="311" border="1">
+   
+   
+        <table width="360" border="1" align="center">
           <tr>
-            <td width="132">请选择查询条件：</td>
-            <td width="163"><label for="conditions"></label>
+            <td width="127">请选择查询条件：</td>
+            <td width="189"><label for="conditions"></label>
               <select name="conditions" id="conditions">
                 <option value="id">员工号</option>
                 <option value="name">姓名</option>
@@ -66,6 +67,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <td colspan="2" align="center"><input type="submit" name="button" id="button" value="提交"></td>
           </tr>
         </table>
+        <input name="flag" type="hidden" id="flag" value="query_employeer">
         
       </form>
     </div>

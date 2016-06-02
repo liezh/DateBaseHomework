@@ -89,15 +89,15 @@ public class SearchEmployeersInfo extends HttpServlet {
       str += "</table></div>";
       request.setAttribute("infoStr", str);
       
-//      String action = (String) request.getAttribute("action");
-//      System.out.println("111111111111"+action);
-//      if(action == "query"){
+      String flagStr = (String) request.getParameter("flag");
+      System.out.println("111111111111"+flagStr);
+      if(flagStr.equals("query_employeer")){
       	RequestDispatcher dispatcher = request.getRequestDispatcher("queryEmployeersInfo.jsp");
       	dispatcher.forward(request, response);
-//	      }else{
-//    	  RequestDispatcher dispatcher = request.getRequestDispatcher("deleteEmployeersInfo.jsp");
-//          dispatcher.forward(request, response);
-//	      }
+	  }else{
+		  RequestDispatcher dispatcher = request.getRequestDispatcher("deleteEmployeersInfo.jsp");
+          dispatcher.forward(request, response);
+	  }
 	}
 
 	/**

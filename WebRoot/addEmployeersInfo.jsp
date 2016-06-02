@@ -103,6 +103,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                <input type="submit" name="button" id="button" value="提交"></td>
         </tr>
       </table>
+      <p>
+        <input name="flag" type="hidden" id="flag" value="add_employeer">
+      </p>
     </form>
     <br>
     <hr>

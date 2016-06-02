@@ -123,6 +123,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <td colspan="2" align="center"><input type="reset" name="button2" id="button2" value="重置">            <input type="submit" name="button" id="button" value="提交"></td>
         </tr>
       </table>
+      <p>
+        <input name="flag" type="hidden" id="flag" value="update_employeer">
+      </p>
     </form>
     <hr>
     <%=request.getAttribute("massge") %>

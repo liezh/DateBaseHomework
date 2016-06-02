@@ -25,8 +25,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <h2>欢迎进入员工基本信息删除页面</h2> <br>
     <form name="form1" method="post" action="SearchEmployeersInfo">
-    <%request.setAttribute("action", "delete"); %>
-      <table width="400" border="1" align="center">
+    
+    
+      <table width="80%" border="1" align="center">
         <tr>
           <td width="187">请选择筛选的类型：</td>
           <td width="166"><label for="conditions"></label>
@@ -49,7 +50,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <%=request.getAttribute("infoStr") %>
           </td>
         </tr>
+        <tr>
+          <td height="42" colspan="2" align="center" valign="middle"><input type="reset" name="button4" id="button4" value="重置">            <input type="submit" name="button3" id="button3" value="提交"></td>
+        </tr>
       </table>
+      <input name="flag" type="hidden" id="flag" value="delete_employeer">
     </form>
     <form name="form2" method="post" action="deleteEmployeersServlet">
       <table width="400" border="1" align="center">
@@ -63,6 +68,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <td align="center"><input type="submit" name="button2" id="button2" value="提交"></td>
         </tr>
       </table>
+      <p>
+        <input name="flag2" type="hidden" id="flag2" value="delete_employeer">
+      </p>
     </form>
     <p>&nbsp;</p>
     <hr>
